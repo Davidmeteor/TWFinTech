@@ -13,7 +13,6 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import I18n from '../../lib/i18n'
-import { VictoryBar } from "victory-native";
 
 const actions = [
   authActions,
@@ -64,7 +63,24 @@ componentWillMount() {
 
   render() {
     return (
-      <VictoryBar />
+      <View style={styles.container}>
+        <Text>username:</Text>
+        <Text>{this.props.global.currentUser.username}</Text>
+        <Text>email:</Text>
+        <Text>{this.props.global.currentUser.email}</Text>
+        <Text>uid:</Text>
+        <Text>{this.props.global.currentUser.uid}</Text>
+        <Text>avatar:</Text>
+        <Text>{this.props.global.currentUser.avatar}</Text>
+        <TouchableOpacity
+          onPress={() => this.props.actions.logout()}
+          style={[styles.btn, styles.normalBtn]}
+          underlayColor="transparent"
+          activeOpacity={0.7}
+        >
+          <Text style={[styles.btnText, styles.normalBtnText]}>{I18n.t('Setting.logout')}</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
 }

@@ -1,1 +1,9 @@
 *.png
+.DS_Store
+android/.idea/
+android/app/app.iml
+android/app/build/
+android/local.properties
+android/snowflake.iml
+ios/build/
+node_modules/

@@ -1,4 +1,7 @@
 # TWFinTech
+
+## update to the react-native 0.4x
+
 ~~not working
 Test the react-native-git-upgrade
 https://facebook.github.io/react-native/blog/2016/12/05/easier-upgrades.html~~
@@ -42,5 +45,5 @@ http://stackoverflow.com/questions/41477241/react-native-xcode-upgrade-and-now-r
 #import "RCTFBLoginManager.h"
 ```
 
-- How to solve "React Native--Animated:`useNativeDriver`is not supported because the native animated module is missing"
-http://www.jianshu.com/p/4fb927395d3b
+## How to solve "React Native--Animated:`useNativeDriver`is not supported because the native animated module is missing"
+* http://www.jianshu.com/p/4fb927395d3b

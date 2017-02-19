@@ -3,7 +3,7 @@
 ## update to the react-native 0.4x
 
 ~~not working
-Test the react-native-git-upgrade
+Test the react-native-git-upgrade<br>
 https://facebook.github.io/react-native/blog/2016/12/05/easier-upgrades.html~~
 
 - Update package.json
@@ -14,6 +14,16 @@ https://facebook.github.io/react-native/blog/2016/12/05/easier-upgrades.html~~
 
 - Follow this thread 
 http://stackoverflow.com/questions/41477241/react-native-xcode-upgrade-and-now-rctconvert-h-not-found
+
+To solve the issue, you have to do the following:
+
+* In Xcode, go to the project scheme (Product -> Scheme -> Manage Scheme -> double click your project).
+* Click on the 'Build' option at the left pane.
+* Uncheck 'Parallelize Build' under Build Options.
+* Then in Targets section, click '+' button then search for 'React'. Select it and click 'Add'.
+* 'React' should now appear under Targets section. Click and drag it to the top so that it will be the first item in the list (before your project).
+* Clean the project and build.
+
 ```
 // RNVectorIconsManager.h
 #import <React/RCTBridgeModule.h>

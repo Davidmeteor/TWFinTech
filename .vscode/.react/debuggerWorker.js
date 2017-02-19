@@ -1,3 +1,22 @@
+
+// Initialize some variables before react-native code would access them
+// and also avoid Node's GLOBAL deprecation warning
+var onmessage=null, self=global.GLOBAL=global;
+// Cache Node's original require as __debug__.require
+var __debug__={require: require};
+process.on("message", function(message){
+    if (onmessage) onmessage(message);
+});
+var postMessage = function(message){
+    process.send(message);
+};
+var importScripts = (function(){
+    var fs=require('fs'), vm=require('vm');
+    return function(scriptUrl){
+        var scriptCode = fs.readFileSync(scriptUrl, "utf8");
+        vm.runInThisContext(scriptCode, {filename: scriptUrl});
+    };
+})();
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -6,45 +25,77 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
+
 /* global __fbBatchedBridge, self, importScripts, postMessage, onmessage: true */
 /* eslint no-unused-vars: 0 */
+
 'use strict';
 
-var messageHandlers = {
-  'executeApplicationScript': function(message, sendReply) {
-    for (var key in message.inject) {
-      self[key] = JSON.parse(message.inject[key]);
-    }
-    let error;
-    try {
-      importScripts(message.url);
-    } catch (err) {
-      error = JSON.stringify(err);
-    }
-    sendReply(null /* result */, error);
-  }
-};
+onmessage = (function() {
+  var visibilityState;
+  var showVisibilityWarning = (function() {
+    var hasWarned = false;
+    return function() {
+      // Wait until `YellowBox` gets initialized before displaying the warning.
+      if (hasWarned || console.warn.toString().includes('[native code]')) {
+        return;
+      }
+      hasWarned = true;
+      console.warn(
+        'Remote debugger is in a background tab which may cause apps to ' +
+        'perform slowly. Fix this by foregrounding the tab (or opening it in ' +
+        'a separate window).'
+      );
+    };
+  })();
 
-onmessage = function(message) {
-  var object = message.data;
-
-  var sendReply = function(result, error) {
-    postMessage({replyID: object.id, result: result, error: error});
+  var messageHandlers = {
+    'executeApplicationScript': function(message, sendReply) {
+      for (var key in message.inject) {
+        self[key] = JSON.parse(message.inject[key]);
+      }
+      var error;
+      try {
+        importScripts(message.url);
+      } catch (err) {
+        error = JSON.stringify(err);
+      }
+      sendReply(null /* result */, error);
+    },
+    'setDebuggerVisibility': function(message) {
+      visibilityState = message.visibilityState;
+    },
   };
 
-  var handler = messageHandlers[object.method];
-  if (handler) {
-    // Special cased handlers
-    handler(object, sendReply);
-  } else {
-    // Other methods get called on the bridge
-    var returnValue = [[], [], [], 0];
-    try {
-      if (typeof __fbBatchedBridge === 'object') {
-        returnValue = __fbBatchedBridge[object.method].apply(null, object.arguments);
-      }
-    } finally {
-      sendReply(JSON.stringify(returnValue));
+  return function(message) {
+    if (visibilityState === 'hidden') {
+      showVisibilityWarning();
     }
-  }
-};
+
+    var object = message.data;
+
+    var sendReply = function(result, error) {
+      postMessage({replyID: object.id, result: result, error: error});
+    };
+
+    var handler = messageHandlers[object.method];
+    if (handler) {
+      // Special cased handlers
+      handler(object, sendReply);
+    } else {
+      // Other methods get called on the bridge
+      var returnValue = [[], [], [], 0];
+      try {
+        if (typeof __fbBatchedBridge === 'object') {
+          returnValue = __fbBatchedBridge[object.method].apply(null, object.arguments);
+        }
+      } finally {
+        sendReply(JSON.stringify(returnValue));
+      }
+    }
+  };
+})();
+
+// Notify debugger that we're done with loading
+// and started listening for IPC messages
+postMessage({workerLoaded:true});

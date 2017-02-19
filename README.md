@@ -42,3 +42,5 @@ http://stackoverflow.com/questions/41477241/react-native-xcode-upgrade-and-now-r
 #import "RCTFBLoginManager.h"
 ```
 
+- How to solve "React Native--Animated:`useNativeDriver`is not supported because the native animated module is missing"
+http://www.jianshu.com/p/4fb927395d3b

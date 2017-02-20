@@ -71,3 +71,7 @@ npm install react-native-pathjs-charts --save
 - libRNSVG.a in "Link Binary With Libraries"
 - $(SRCROOT)/../node_modules/react-native-svg/ios in "Header Search Paths"
 
+* 02/19: Blocked by one crash issue, no solution yet
+- https://github.com/react-native-community/react-native-svg/issues/246
+- https://github.com/oblador/react-native-progress/issues/40#issue-200216423
+

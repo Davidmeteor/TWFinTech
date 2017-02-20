@@ -54,6 +54,20 @@ To solve the issue, you have to do the following:
 #import "RCTFBLogin.h"
 #import "RCTFBLoginManager.h"
 ```
-
 ## How to solve "React Native--Animated:`useNativeDriver`is not supported because the native animated module is missing"
 * http://www.jianshu.com/p/4fb927395d3b
+
+## Install the react-native-svg and react-native-pathjs-charts
+
+```
+npm install react-native-svg --save
+react-native link react-native-svg
+npm install react-native-pathjs-charts --save
+```
+
+* If you meet the "No component found for view with name RNSVGxxxx" error
+- https://github.com/react-native-community/react-native-svg/issues/79
+- RNSVG.xcodeproj in "Libraries"
+- libRNSVG.a in "Link Binary With Libraries"
+- $(SRCROOT)/../node_modules/react-native-svg/ios in "Header Search Paths"
+

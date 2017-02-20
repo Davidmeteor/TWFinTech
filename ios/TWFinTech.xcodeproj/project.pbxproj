@@ -33,6 +33,7 @@
 		481062E81D842E7300C6C5E2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481062E51D842E7300C6C5E2 /* FBSDKCoreKit.framework */; };
 		481062E91D842E7300C6C5E2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481062E61D842E7300C6C5E2 /* FBSDKLoginKit.framework */; };
 		481062EA1D842E7300C6C5E2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481062E71D842E7300C6C5E2 /* FBSDKShareKit.framework */; };
+		637111E81E5A6A8E0042D6A2 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637111E41E5A6A620042D6A2 /* libRNSVG.a */; };
 		63A2A6311E5A4FE5008524B5 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A2A6121E5A4F91008524B5 /* libRCTAnimation.a */; };
 		66774208670B4713A395A9B8 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF87B66340F74D9BA43565D5 /* Zocial.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -132,6 +133,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 4F3A6B5B1ACFBCC500CA65F7;
 			remoteInfo = RCTFBLogin;
+		};
+		637111E31E5A6A620042D6A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3131C847720D4184B6175E57 /* RNSVG.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = RNSVG;
 		};
 		637967161E2C20060064A650 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -342,6 +350,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				32C0D416380C424981A0FF2B /* libRCTActionSheet.a in Frameworks */,
 				63A2A6311E5A4FE5008524B5 /* libRCTAnimation.a in Frameworks */,
+				637111E81E5A6A8E0042D6A2 /* libRNSVG.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +485,14 @@
 			isa = PBXGroup;
 			children = (
 				481062DD1D8420DC00C6C5E2 /* libRCTFBLogin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		637111C41E5A6A620042D6A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				637111E41E5A6A620042D6A2 /* libRNSVG.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -706,6 +723,10 @@
 					ProjectRef = 15574BB3E52D4A6AB2804168 /* RNI18n.xcodeproj */;
 				},
 				{
+					ProductGroup = 637111C41E5A6A620042D6A2 /* Products */;
+					ProjectRef = 3131C847720D4184B6175E57 /* RNSVG.xcodeproj */;
+				},
+				{
 					ProductGroup = 481062BB1D841D6700C6C5E2 /* Products */;
 					ProjectRef = C6C41D520E9F41D8934E7BBF /* RNVectorIcons.xcodeproj */;
 				},
@@ -805,6 +826,13 @@
 			fileType = archive.ar;
 			path = libRCTFBLogin.a;
 			remoteRef = 481062DC1D8420DC00C6C5E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		637111E41E5A6A620042D6A2 /* libRNSVG.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSVG.a;
+			remoteRef = 637111E31E5A6A620042D6A2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		637967171E2C20060064A650 /* Slider.app */ = {

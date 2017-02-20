@@ -160,6 +160,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-svg')
     compile project(':react-native-facebook-login')
     compile project(':react-native-simpledialog-android')
 

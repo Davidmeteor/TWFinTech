@@ -1,5 +1,30 @@
 # TWFinTech
 
+## How to draw the chart in the React-Native
+
+* will try this one https://github.com/redpandatronicsuk/arty-charty
+
+* 02/21: Try this approach, https://github.com/tomauty/react-native-chart
+- does not work. The functionality is not complete
+
+* 02/19: Blocked by one crash issue, no solution yet
+- https://github.com/react-native-community/react-native-svg/issues/246
+- https://github.com/oblador/react-native-progress/issues/40#issue-200216423
+
+* Install the react-native-svg and react-native-pathjs-charts
+
+```
+npm install react-native-svg --save
+react-native link react-native-svg
+npm install react-native-pathjs-charts --save
+```
+
+* If you meet the "No component found for view with name RNSVGxxxx" error
+- https://github.com/react-native-community/react-native-svg/issues/79
+- RNSVG.xcodeproj in "Libraries"
+- libRNSVG.a in "Link Binary With Libraries"
+- $(SRCROOT)/../node_modules/react-native-svg/ios in "Header Search Paths"
+
 ## update to the react-native 0.4x
 
 ~~not working
@@ -56,22 +81,4 @@ To solve the issue, you have to do the following:
 ```
 ## How to solve "React Native--Animated:`useNativeDriver`is not supported because the native animated module is missing"
 * http://www.jianshu.com/p/4fb927395d3b
-
-## Install the react-native-svg and react-native-pathjs-charts
-
-```
-npm install react-native-svg --save
-react-native link react-native-svg
-npm install react-native-pathjs-charts --save
-```
-
-* If you meet the "No component found for view with name RNSVGxxxx" error
-- https://github.com/react-native-community/react-native-svg/issues/79
-- RNSVG.xcodeproj in "Libraries"
-- libRNSVG.a in "Link Binary With Libraries"
-- $(SRCROOT)/../node_modules/react-native-svg/ios in "Header Search Paths"
-
-* 02/19: Blocked by one crash issue, no solution yet
-- https://github.com/react-native-community/react-native-svg/issues/246
-- https://github.com/oblador/react-native-progress/issues/40#issue-200216423
 

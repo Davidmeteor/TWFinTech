@@ -2,7 +2,10 @@
 
 ## How to draw the chart in the React-Native
 
-will try this one https://github.com/redpandatronicsuk/arty-charty
+### 02/22: try this one https://github.com/redpandatronicsuk/arty-charty
+- It's cool and animation works well
+- at least for pie chart, it's good, but can't show any information in the chart, like name, value
+- Already sent out one question to the author
 
 ### 02/21: Try this approach, https://github.com/tomauty/react-native-chart
 - does not work. The functionality is not complete
